@@ -24,7 +24,7 @@ public class MazeGenerator : MonoBehaviour
         {
             for(int j = 0; j < _mazeDepth; j++)
             {
-                _mazeGrid[i, j] = Instantiate(_mazeCellPrefab, new Vector3(i, 0, j), Quaternion.identity);
+                _mazeGrid[i, j] = Instantiate(_mazeCellPrefab, new Vector3(i, 0, j), Quaternion.identity, transform);
             }
         }
 
