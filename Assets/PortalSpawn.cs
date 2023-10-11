@@ -11,9 +11,10 @@ public class PortalSpawn : MonoBehaviour
     public List<GameObject> allPortals;
     private List<Vector3> randPositions;
     private List<Vector3> selectedRandPositions;
+    private int multiplier = 6;
     void Start()
     {
-        randPositions = new List<Vector3>() { new Vector3(10, 0, 3), new Vector3(10, 0, 17), new Vector3(3, 0, 10), new Vector3(17, 0, 10) };
+        randPositions = new List<Vector3>() { new Vector3(10*multiplier, 0, 3*multiplier), new Vector3(10*multiplier, 0, 17*multiplier), new Vector3(3*multiplier, 0, 10*multiplier), new Vector3(17*multiplier, 0, 10*multiplier) };
         selectedRandPositions = GenerateRandLocation();
         allPortals = new List<GameObject>();
 
@@ -36,7 +37,7 @@ public class PortalSpawn : MonoBehaviour
 
     List<Vector3> GenerateRandLocation()
     {
-        List<Vector3> results = new List<Vector3>(2);
+        List<Vector3> results = new List<Vector3>();
         
         //selecting first random point
         int randLocationIndex = Random.Range(0, randPositions.Count);
@@ -45,22 +46,22 @@ public class PortalSpawn : MonoBehaviour
         randPositions.RemoveAt(randLocationIndex);
 
         //finds which one was selected, in order to get the second location that is across from it
-        if(randLocation1.x == 10)
+        if(randLocation1.x == 10 * multiplier)
         {
             for(int i = 0; i < randPositions.Count; i++)
             {
-                if(randPositions[i].x == 10)
+                if(randPositions[i].x == 10 * multiplier)
                 {
                     results.Add(randPositions[i]);
                     randPositions.RemoveAt(i);
                 }
             }
         }
-        else if(randLocation1.z == 10)
+        else if(randLocation1.z == 10 * multiplier)
         {
             for (int i = 0; i < randPositions.Count; i++)
             {
-                if (randPositions[i].z == 10)
+                if (randPositions[i].z == 10 * multiplier)
                 {
                     results.Add(randPositions[i]);
                     randPositions.RemoveAt(i);

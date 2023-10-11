@@ -7,9 +7,10 @@ public class EnemySpawn : MonoBehaviour
     public GameObject enemyPrefab;
     private List<Vector3> enemyPositions;
     private int dimension;
+    private int multiplier = 6;
     void Start()
     {
-        dimension = GameObject.Find("MazeGenerator").GetComponent<MazeGenerator>()._mazeWidth - 1;
+        dimension = (GameObject.Find("MazeGenerator").GetComponent<MazeGenerator>()._mazeWidth - 1) * multiplier;
         enemyPositions = new List<Vector3>() { new Vector3(0, 0, 0), new Vector3(0, 0, dimension), new Vector3(dimension, 0, 0), new Vector3(dimension, 0, dimension) };
 
         //Spawn 4 enemies, one at each corner

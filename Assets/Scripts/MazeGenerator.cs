@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.AI.Navigation;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class MazeGenerator : MonoBehaviour
 
     private MazeCell[,] _mazeGrid;
 
+    //public NavMeshSurface surface;
+
     void Start()
     {
         _mazeGrid = new MazeCell[_mazeWidth, _mazeDepth];
@@ -29,6 +32,8 @@ public class MazeGenerator : MonoBehaviour
         }
 
         GenerateMaze(null, _mazeGrid[0, 0]);
+        //surface.BuildNavMesh();
+        transform.localScale = new Vector3(6, 6, 6);
     }
 
     private void GenerateMaze(MazeCell previousCell, MazeCell currentCell)

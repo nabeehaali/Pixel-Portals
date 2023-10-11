@@ -8,11 +8,13 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField]
     private float playerSpeed = 1;
+    private int multiplier = 6;
     // Start is called before the first frame update
     void Start()
     {
         _mazeGenerator = GameObject.Find("MazeGenerator").GetComponent<MazeGenerator>();
         transform.position = new Vector3(Random.Range(0, _mazeGenerator._mazeWidth), 0, Random.Range(0, _mazeGenerator._mazeDepth));
+        transform.position *= multiplier;
         //spawn at random location
     }
 
